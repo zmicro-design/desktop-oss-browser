@@ -52,7 +52,7 @@ install() {
     # example:
     #   https://gosspublic.alicdn.com/ossbrowser/1.17.0/oss-browser-darwin-x64.zip
     # generate url
-    local url="${DESKTOP_CORE_RELEASE_DOWNLOAD}/${DESKTOP_CORE_VERSION}/${name}-${platform}-x64.zip"
+    local url="${DESKTOP_CORE_RELEASE_DOWNLOAD}/${DESKTOP_CORE_VERSION#v}/${name}-${platform}-x64.zip"
     log::debug "[$(timestamp)][desktop][$name][$kernel][$arch] url: $url, file: ${cache_file}, tmp_dir: $tmp_dir"
 
     # download
@@ -63,7 +63,7 @@ install() {
   # install
   log::info "[$(timestamp)][desktop][$name] installing $cache_file ..."
   # os::install $source_bin_file $usr_bin_dir $name
-  install::zip $cache_file oss-browser oss-browser.app
+  install::zip $cache_file oss-browser oss-browser.app "oss-browser-darwin-x64/"
 
   # clean
   log::info "[$(timestamp)][desktop][$name] cleaning ..."
